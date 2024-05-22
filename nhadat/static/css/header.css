@@ -1,0 +1,122 @@
+.header {
+    box-sizing: border-box;
+    position: relative;
+    height: 5.5rem;
+    width: 100%;
+    background: var(--white-color);
+    border: 1px solid #D9D9D9;
+    box-shadow: 0rem 0.4rem 2.5rem rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 5.5 rem;
+  }
+  
+  .header__navbar-item-link {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-color);
+  }
+  
+  .header__navbar-list-left {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 700;
+    font-style: italic;
+  }
+  
+  .header__navbar .header__navbar-list-left .header__navbar-item .header__navbar-item-link {
+    position: relative;
+    z-index: 1;
+    top: -0.3rem;
+  }
+  
+  .header__navbar-logo-link{
+      background: linear-gradient(to right, #FF9110 0%, #FFC077 100%);
+         -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;	
+  }
+  
+  .header__navbar-list-right {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+  
+  .header__navbar-user{
+      font-size: 20px;
+      padding-right: 35px;
+      cursor: pointer;
+  }
+  
+  .text-user{
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .header__navbar-upload{
+      padding: 8px 26px;
+      background: #F79727;
+      border: 1px solid #FFC888;
+      cursor: pointer;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      
+      border-radius: 5px;
+  }
+  
+  .header__navbar-upload:hover {
+      opacity: 0.8;
+  }
+  .text-upload{
+      margin-left: 5px
+  }
+  
+  .menu-show-container{
+      position: absolute;
+      background: #ffffff;
+      padding: 20px 15px;
+      border-radius: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .li-dropdown{
+      padding: 7px 0;
+      border-bottom: 1px solid #bebebe;
+  }
+  
+  .li-dropdown:hover{
+      color: #ee8f20;
+  }
+  
+  .li-dropdown i{
+      font-size: 15px;
+  }
+  
+  .li-dropdown a{
+      padding-left: 5px;
+  }
+  
+  #dropdown{
+      display: none;
+  }
+  .menu-show-container::before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 16%;
+    top: -17px;
+  }
+  .header__navbar-user:hover #dropdown {
+    display: block;
+  }

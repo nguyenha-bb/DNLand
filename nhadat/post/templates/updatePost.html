@@ -1,0 +1,169 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/update-post.css"%}" />
+<script src="{% static "js/update-post.js"%}"></script>
+<form
+  method="POST"
+  action="../update-post/{{id}}"
+  name="form_upload"
+  onsubmit="return validateForm()"
+  enctype="multipart/form-data"
+>
+{% csrf_token %}
+  <input
+    type="hidden"
+    name="id"
+    value="<%= post.getInfoPost().getIdInfoPost() %>"
+  />
+  <div class="grid">
+    <div class="container__land-upload">
+      <div class="container__land-title">Chỉnh sửa bài viết</div>
+      <div class="container__land-content">
+        <div class="container__land-upload-title-price">
+          <div class="upload-input">
+            {% comment %} <input
+              type="file"
+              name="image"
+              id="image"
+              onchange="previewImage()"
+              accept="image/*"
+              style="font-size: 1.3rem"
+            /> {% endcomment %}
+            {{form.image}}
+            {% comment %} <img
+              id="myImagePreview"
+              name="urlImg"
+              src="{{form.image.url}}"
+            /> {% endcomment %}
+          </div>
+
+          <div class="title-price">
+            <div class="set-title">
+              <span class="title"
+                >Tiêu đề <span class="asterisk"> *</span></span
+              >
+              {% comment %} <input
+                name="title"
+                id="title"
+                value="<%= post.getInfoPost().getTitle() %>"
+                placeholder="Tiêu đề ..."
+                oninput="clearErrorMessage()"
+              /> {% endcomment %}
+              {{form.title}}
+            </div>
+
+            <div class="set-title">
+              <span class="price">Giá <span class="asterisk"> *</span></span>
+              {% comment %} <input
+                name="inputPrice"
+                id="price"
+                value="<%= post.getInfoPost().getPrice() %>"
+                placeholder="Giá ..."
+                oninput="updateFormattedPrice()"
+              /> {% endcomment %}
+              {{form.price}}
+              <div id="formattedPrice"></div>
+            </div>
+
+            <div class="set-title">
+              <span class="area"
+                >Diện tích <span class="asterisk"> *</span></span
+              >
+              {% comment %} <input
+                name="area"
+                id="area"
+                value="<%= post.getInfoPost().getSquare() %>"
+                placeholder="Diện tích ..."
+                oninput="clearErrorMessage()"
+              /> {% endcomment %}
+              {{form.square}}
+            </div>
+
+            <div class="set-title">
+              <span class="direction"
+                >Hướng <span class="asterisk"> *</span></span
+              >
+              {% comment %} <select
+                name="inputDirection"
+                id="direction"
+                placeholder="Hướng ..."
+                oninput="clearErrorMessage()"
+              >
+                <option value="<%= d.getIdDirection()%>"></option>
+              </select> {% endcomment %}
+              {{form.direction}}
+            </div>
+          </div>
+        </div>
+
+        <div class="container__land-upload-address">
+          <div class="container__land-update-address_">
+            <div class="set-title">
+              <label for="city" class="city"
+                >Tỉnh/Thành <span class="asterisk"> *</span></label
+              >
+              {% comment %} <select
+                name="inputDistrict"
+                id="district"
+                oninput="clearErrorMessage()"
+                onchange="getlistCommune()"
+              >
+                <option value="0">- Chọn Quận/Huyện -</option>
+              </select> {% endcomment %}
+              {{form.province}}
+            </div>
+
+            <div class="set-title set-width">
+              <label for="district" class="district"
+                >Quận/Huyện <span class="asterisk"> *</span></label
+              >
+              {% comment %} <select name="commune" id="commune" oninput="clearErrorMessage()">
+                <option value="0">- Chọn Phường/Xã -</option>
+              </select> {% endcomment %}
+              {{form.district}}
+            </div>
+
+            <div class="set-title set-width">
+              <label for="ward" class="ward"
+                >Phường/Xã <span class="asterisk"> *</span></label
+              >
+              {% comment %} <select name="commune" id="commune" oninput="clearErrorMessage()">
+                <option value="0">- Chọn Phường/Xã -</option>
+              </select> {% endcomment %}
+              {{form.ward}}
+            </div>
+
+          </div>
+          <div class="set-title">
+            <span class="address"
+              >Số nhà, tên đường <span class="asterisk"> *</span></span
+            >
+            {% comment %} <input
+              name="address"
+              id="address"
+              value="<%= post.getInfoPost().getAddress() %>"
+              placeholder="Số nhà, tên đường ..."
+              oninput="clearErrorMessage()"
+            /> {% endcomment %}
+            {{form.addressDetail}}
+          </div>
+
+          <div class="set-title">
+            <span class="description"
+              >Mô tả <span class="asterisk"> *</span></span
+            >
+            {% comment %} <textarea
+              name="des"
+              id="description"
+              placeholder="Mô tả ..."
+              oninput="clearErrorMessage()"
+            ></textarea> {% endcomment %}
+            {{form.description}}
+          </div>
+        </div>
+      </div>
+      <span id="error-message"></span>
+      <button name="btn-submit" class="btn-submit">Update</button>
+    </div>
+  </div>
+</form>
+{% endblock content %}

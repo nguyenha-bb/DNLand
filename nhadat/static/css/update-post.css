@@ -1,0 +1,131 @@
+.container__land-upload{
+    margin: 45px 180px 20px 180px;
+    background: #fff;
+    padding: 40px 60px;
+    border-radius: 10px;
+    padding-bottom: 65px;
+}
+.container__land-title{
+    font-size: 21px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container__land-content{
+    padding-bottom: 15px;
+}
+
+.container__land-upload-title-price{
+    display: flex;
+    justify-content: space-between;
+}
+
+.container__land-upload-title-price .upload-input img{
+    width: 300px;
+    height: 300px;
+    border: 1px solid #fe9900;
+}
+
+.title-price{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding-left: 70px;
+    
+}
+
+.set-title{
+    display: flex;
+    font-size: 14px;
+    flex-direction: column;
+    /* padding-bottom: 20px; */
+    
+}
+
+.set-title input, .set-title select{
+    height: 40px;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    outline: none;
+    font-size: 1.4rem;
+    background-color: white;
+    
+}
+
+.set-title + .set-title{
+    margin-top: 15px;
+}
+
+.set-title.set-width{
+    margin-bottom: 15px;
+}
+
+.title, .price, .area, .direction, .district, .city, .address, .description{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.container__land-upload-title-price.upload-input label{
+    color: rgba(0, 0, 0, 0.28);
+    font-weight: 500;
+}
+
+.upload-input {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+ .upload-input input[type="file"] {
+       position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+ }
+ 
+ .upload-input img {
+       max-width: 100%;
+ }
+
+ .fa-image{
+    position: absolute;
+    top: 44%;
+    left: 45%;
+    font-size: 4rem;
+    color: #feb03a85;
+ }
+ 
+ .asterisk{
+     color: red;
+ }
+ .btn-submit{
+     padding: 10px 32px;
+    background: #ffa12e;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    float: right;
+ }
+ 
+ .btn-submit:hover{
+     opacity: 0.8;
+ }
+ 
+ #formattedPrice{
+     margin-top: 5px;
+     color: #e9b057;
+     font-style: italic;
+ }
+ 
+ #error-message{
+     font-size: 13px;
+     color: red;
+     font-style: italic;
+ }

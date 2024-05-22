@@ -1,0 +1,153 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/censor-post.css"%}" />
+<form
+  method="post"
+  action="C_Post?id=<%= post.getInfoPost().getIdInfoPost() %>&action="
+  name="form-upload"
+  onsubmit="return validateForm()"
+>
+  <div class="grid">
+    <div class="container__land-upload">
+      <div class="container__land-title">Kiểm duyệt bài viết</div>
+      <div class="container__land-content">
+        <div class="container__land-upload-title-price">
+          <div class="upload-input">
+            <input
+              type="file"
+              name="image"
+              id="image"
+              onchange="previewImage()"
+              accept="image/*"
+              style="font-size: 1.3rem"
+              disabled="disabled"
+            />
+            <img
+              id="myImagePreview"
+              name="urlImg"
+              src="image?name=<%=post.getInfoPost().getSrcImage() %>"
+            />
+          </div>
+
+          <div class="title-price">
+            <div class="set-title">
+              <span class="title"
+                >Tiêu đề <span class="asterisk"> *</span></span
+              >
+              <input
+                name="title"
+                id="title"
+                value="<%= post.getInfoPost().getTitle() %>"
+                placeholder="Tiêu đề ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+
+            <div class="set-title">
+              <span class="price">Giá <span class="asterisk"> *</span></span>
+              <input
+                name="price"
+                id="price"
+                value="<%= post.getInfoPost().getPrice() %>"
+                placeholder="Giá ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+
+            <div class="set-title">
+              <span class="area"
+                >Diện tích <span class="asterisk"> *</span></span
+              >
+              <input
+                name="area"
+                id="area"
+                value="<%= post.getInfoPost().getSquare() %>"
+                placeholder="Diện tích ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+
+            <div class="set-title">
+              <span class="direction"
+                >Hướng <span class="asterisk"> *</span></span
+              >
+              <input
+                name="direction"
+                id="direction"
+                value="<%= post.getInfoPost().getDirection().getNameDirection() %>"
+                placeholder="Hướng ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="container__land-upload-address">
+          <div class="container__land-update-address_">
+            <div class="set-title">
+              <label for="city" class="city"
+                >Quận/Huyện <span class="asterisk"> *</span></label
+              >
+              <input
+                name="city"
+                id="city"
+                value="<%=post.getInfoPost().getDistrict().getNameDistrict()%>"
+                placeholder="Hướng ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+
+            <div class="set-title set-width">
+              <label for="district" class="district"
+                >Phường/Xã <span class="asterisk"> *</span></label
+              >
+              <input
+                name="district"
+                id="district"
+                value="<%=post.getInfoPost().getCommune().getNameCommune()%>"
+                placeholder="Hướng ..."
+                oninput="clearErrorMessage()"
+                readonly="readonly"
+              />
+            </div>
+          </div>
+          <div class="set-title">
+            <span class="address"
+              >Số nhà, tên đường <span class="asterisk"> *</span></span
+            >
+            <input
+              name="address"
+              id="address"
+              value="<%= post.getInfoPost().getAddress() %>"
+              placeholder="Số nhà, tên đường ..."
+              oninput="clearErrorMessage()"
+              readonly="readonly"
+            />
+          </div>
+
+          <div class="set-title">
+            <span class="description"
+              >Mô tả <span class="asterisk"> *</span></span
+            >
+            <textarea
+              name="description"
+              id="description"
+              value=""
+              placeholder="Mô tả ..."
+              oninput="clearErrorMessage()"
+              readonly="readonly"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+      <span id="error-message"></span>
+      <input type="submit" class="btn-submit" value="Accept" />
+      <input type="submit" class="btn-deny" value="Deny" />
+    </div>
+  </div>
+</form>
+{% endblock content %}

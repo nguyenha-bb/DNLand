@@ -1,0 +1,103 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/home.css"%}" />
+<div class="container__home">
+  <div class="grid grid-home">
+    <form action="C_Post?action=getList" name="form_home" method="POST">
+      <div class="container__home-filter">
+        <i class="fa-solid fa-filter filter-icon"></i>
+        <div class="container__filter">
+          <div class="item__filter">
+            <select name="dt" class="fiter-cbb" id="filter-address">
+              <option value="0">Quận / Huyện</option>
+            </select>
+          </div>
+
+          <div class="item__filter">
+            <select name="sq" class="fiter-cbb" id="filter-area">
+              <option value="0">Diện tích</option>
+              <option value="1">Dưới 30 m2</option>
+              <option value="2">30 - 50 m2</option>
+              <option value="3">50 - 100 m2</option>
+              <option value="4">100 - 200 m2</option>
+              <option value="5">Trên 200 m2</option>
+            </select>
+          </div>
+
+          <div class="item__filter">
+            <select name="p" class="fiter-cbb" id="filter-price">
+              <option value="0">Giá</option>
+              <option value="1">Dưới 500 triệu</option>
+              <option value="2">500 triệu - 1 tỷ</option>
+              <option value="3">1 - 3 tỷ</option>
+              <option value="4">3 - 5 tỷ</option>
+              <option value="5">Trên 5 tỷ</option>
+            </select>
+          </div>
+
+          <div class="item__filter">
+            <select name="dr" class="fiter-cbb" id="filter-direction">
+              <option value="0">Hướng</option>
+            </select>
+          </div>
+
+          <input type="submit" class="btn-submit" value="Tìm kiếm" />
+        </div>
+      </div>
+
+      <div class="container__home-main-content">
+        <div class="list__house-info">
+          <input
+            type="hidden"
+            name="id"
+            value="<%= post.getInfoPost().getIdInfoPost() %>"
+          />
+          {% for post in list_post %}
+          <a href="detail-post/{{post.id}}" class="item__house-info">
+            <div class="item__image">
+              <img src="{{post.image.url}}" alt="error" class="image-house" />
+            </div>
+            <div class="item__house-detail">
+              <div class="item__house-title">{{post.title}}</div>
+              <div class="item__house-area">{{post.square}} m2</div>
+              <div class="item__house-address">
+                Địa chỉ: {{post.addressDetail}}, {{post.ward}},
+                {{post.district}}, {{post.province}}
+              </div>
+              <div class="item__house-desc">Mô tả: {{post.description}}</div>
+              <div class="item__sub-info">
+                <div class="item__house-date">{{post.postTime}}</div>
+                <div class="item__house-price">
+                  {{post.priceBillion}} tỷ | {{post.pricePerSquare}} triệu/m2
+                </div>
+              </div>
+            </div>
+          </a>
+          {% endfor %}
+        </div>
+        <div class="container__page-index">
+          {% if list_post.has_previous %}
+          <div class="item__page-index">
+            <a
+              href="?page={{ list_post.previous_page_number }}"
+              class="page-arrow"
+              ><i class="fa-solid fa-chevron-left"></i
+            ></a>
+          </div>
+          {% endif %}
+          <div class="item__page-index page-info">
+            <a href="" class="">{{ list_post.number }}</a>
+          </div>
+
+          {% if list_post.has_next %}
+          <div class="item__page-index">
+            <a href="?page={{ list_post.next_page_number }}" class="page-arrow"
+              ><i class="fa-solid fa-chevron-right"></i
+            ></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

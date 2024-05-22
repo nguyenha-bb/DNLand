@@ -1,0 +1,55 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/list-post-admin.css"%}" />
+<script src="{% static "js/list-posts-admin.js"%}"></script>
+<div class="container__user-posts">
+  <div class="grid grid-user-posts">
+    <form action="" name="form-user-posts" method="POST">
+      <div class="container__user-posts-title">
+        <i class="fa-solid fa-list-check"></i>Kiểm duyệt bài viết
+      </div>
+
+      <div class="container__user-posts-main-content">
+        <div class="list__house-info">
+          <input
+            type="hidden"
+            name="id"
+            value="<%= post.getInfoPost().getIdInfoPost() %>"
+          />
+          <div class="item__house-info">
+            <div class="item__image">
+              <img src="{% static "images/house.jpg" %}" alt="error"
+              class="image-house" />
+            </div>
+            <div class="item__house-detail">
+              <div class="item__house-title">
+                <a
+                  class="link-post"
+                  href="C_Post?action=getDetailReview&id=<%= post.getInfoPost().getIdInfoPost() %>"
+                  >Xem</a
+                >
+                <a
+                  class="link-post"
+                  href="C_Post?action=accept&id=<%= post.getInfoPost().getIdInfoPost() %>"
+                  >Duyệt</a
+                >
+                <a
+                  class="link-post"
+                  href="C_Post?action=deny&id=<%= post.getInfoPost().getIdInfoPost() %>"
+                  >Hủy duyệt</a
+                >
+              </div>
+              <div class="item__house-area">m2</div>
+              <div class="item__house-address">Địa chỉ:</div>
+              <div class="item__house-desc">Mô tả:</div>
+              <div class="item__sub-info">
+                <div class="item__house-date"></div>
+                <div class="item__house-price">triệu/m2</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

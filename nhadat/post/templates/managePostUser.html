@@ -1,0 +1,86 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/manage-post.css"%}" />
+<script src="{% static "js/manage-posts-user.js"%}"></script>
+<div class="container__user-posts">
+  <div class="grid grid-user-posts">
+    <form action="" name="form-user-posts" method="POST">
+      <div class="container__user-posts-title">
+        <i class="fa-solid fa-list-check"></i>Quản lý bài viết
+      </div>
+      <div class="container__user-posts-main-content">
+        <div class="list__house-info">
+          {% for post in list_post %}
+          <div class="item__house-info">
+            <div class="item__image">
+              <img src="{{post.image.url}}" alt="error"
+              class="image-house" />
+            </div>
+            <div class="item__house-detail">
+              <div class="item__house-title">
+                <a
+                  class="link-post"
+                  href="../detail-post/{{post.id}}"
+                  >Xem</a
+                >
+                <a
+                  class="link-post"
+                  href="../update-post/{{post.id}}"
+                  >Sửa</a
+                >
+                <a
+                  class="link-post delete-post"
+                  href="../delete-post/{{post.id}}"
+                  >Xóa</a
+                >
+                <span class="item__house-status">
+                  <span class="not-check">
+                      {% if post.status == 0 %}
+                          <div class="not-check">Chưa kiểm duyệt</div>
+                      {% elif post.status == 1 %}
+                          <div class="check-success">Kiểm duyệt thành công</div>
+                      {% elif post.status == 2 %}
+                          <div class="check-fail">Kiểm duyệt thất bại</div>
+                      {% endif %}
+                  </span>
+                </span>
+              </div>
+              <div class="item__house-area">{{post.square}} m2</div>
+              <div class="item__house-address">Địa chỉ: {{post.addressDetail}}, {{post.ward}},
+                {{post.district}}, {{post.province}}</div>
+              <div class="item__house-desc">Mô tả: {{post.description}}</div>
+              
+              <div class="item__sub-info">
+                <div class="item__house-date">{{post.postTime}}</div>
+                <div class="item__house-price">{{post.priceBillion}} tỷ | {{post.pricePerSquare}} triệu/m2</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="container__page-index">
+          {% if list_post.has_previous %}
+          <div class="item__page-index">
+            <a
+              href="?page={{ list_post.previous_page_number }}"
+              class="page-arrow"
+              ><i class="fa-solid fa-chevron-left"></i
+            ></a>
+          </div>
+          {% endif %}
+          <div class="item__page-index page-info">
+            <a href="" class="">{{ list_post.number }}</a>
+          </div>
+
+          {% if list_post.has_next %}
+          <div class="item__page-index">
+            <a href="?page={{ list_post.next_page_number }}" class="page-arrow"
+              ><i class="fa-solid fa-chevron-right"></i
+            ></a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

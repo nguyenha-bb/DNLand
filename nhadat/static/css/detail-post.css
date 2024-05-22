@@ -1,0 +1,101 @@
+.grid.detail-page{
+    display: flex;
+    margin-bottom: 35px;
+}
+.container__land-detail{
+    margin-top: 45px;
+}
+
+.container__land-details-main-content{
+    width: 60%;
+    margin-left: 50px;
+}
+
+.container__land-detail-main-content{
+    display: flex;
+    align-items: center;
+}
+.container__land-detail-top-content{
+    overflow: hidden;
+    margin: 0 40px;
+    margin-bottom: 10px;
+    border: solid 1px #ebebeb;
+}
+
+.container__view-fullsize{
+    position: relative;
+    max-width: 400px;
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    background: #fff;
+}
+
+.image-house{
+    object-fit: cover;
+    width: 100%;
+    
+}
+.image-house + .image-house{
+    margin-top: 7px;
+}
+.icon-back{
+    font-size: 25px;	
+    cursor: pointer;
+}
+
+.container__land-detail-item{
+    padding: 10px 15px;
+    background: #fff;
+    border-radius: 10px;
+    margin-bottom: 8px;
+}
+.title{
+    font-size: 17px;
+    margin-bottom: 7px;
+    color: #292626;
+}
+.total-price-area{
+    display: flex;
+    margin-bottom: 10px;
+    color: #E50000;
+    font-size: 13px;
+    cursor: pointer;
+}
+.total-price{
+    margin-right: 3px;
+}
+
+.total-area{
+    margin-left: 3px;
+}
+
+.group-item{
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    color: #777;
+}
+.characteristic{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+.group-item span{
+    margin-bottom: 5px;
+}
+.group-item span i{
+    margin-right: 5px;	
+    color: black;	
+}
+
+.group-item p{
+    margin-bottom: 5px;
+}
+.container__land-details-advertisement-content{
+    width: 40%;
+}
+.container__land-group-advertisement{
+    margin-left: 75px;
+    margin-right: 50px;
+}

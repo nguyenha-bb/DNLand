@@ -1,0 +1,30 @@
+{% comment %} {% if widget.is_initial %}
+<div class="image-preview">
+  <img
+    src="{{ widget.value.url }}"
+    alt="Current image"
+    style="max-width: 200px"
+  />
+  <input type="file" name="{{ widget.name }}" id="{{ widget.attrs.id }}"{%
+  include "django/forms/widgets/attrs.html" %}>
+</div>
+{% endif %} {% endcomment %} {% if widget.is_initial %}
+<input
+  type="file"
+  name="image"
+  onchange="previewImage()"
+  accept="image/*"
+  id="id_image"
+/>
+<img id="myImagePreview" name="urlImg" src="{{widget.value.url}}" />
+{% else %}
+<input
+  type="file"
+  name="image"
+  onchange="previewImage()"
+  accept="image/*"
+  required=""
+  id="id_image"
+/>
+<img id="myImagePreview" name="urlImg" />
+{% endif %}

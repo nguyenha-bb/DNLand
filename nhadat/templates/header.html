@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="{% static "css/header.css" %}"/>
+  </head>
+  <body>
+    <header class="header">
+      <div class="grid">
+        <nav class="header__navbar">
+          <ul class="header__navbar-list-left">
+            <li class="header__navbar-logo">
+              <a href="{% url 'getList' %}" class="header__navbar-logo-link"
+                >DNLAND</a
+              >
+            </li>
+          </ul>
+          <ul class="header__navbar-list-right">
+            {% if request.session.username %}
+              <li class="header__navbar-user">
+                <span class="text-user">{{ request.session.username }}</span> <i class="fa-solid fa-chevron-down"></i>
+                <div class="menu-show-container" id="dropdown">
+                        <div class="button">
+                            <ul>
+                                <li class="li-dropdown">
+                                    <i class="fa-solid fa-bookmark"></i>
+                                    <span><a href="{% url "managePost" %}">
+                                            Quản lý bài viết
+                                        </a></span>
+                                </li>
+                                <li class="li-dropdown">
+                                    <i class="fa-solid fa-user-pen" ></i>
+                                    <span><a href="">
+                                            Thay đổi mật khẩu
+                                        </a></span>
+                                </li>
+                                <li class="li-dropdown">
+                                    <i class="fa-solid fa-right-from-bracket" ></i>
+                                    <span><a href="{% url "logout" %}">
+                                            Đăng xuất
+                                        </a></span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+              </li>
+              <li>
+                <a href="{% url "uploadPost" %}"><button class="header__navbar-upload"><i class="fa-regular fa-pen-to-square"></i><span class="text-upload">Đăng tin</span></button></a>
+              </li>
+            {% else %}
+              <li class="header__navbar-user">
+                <a class="text-user" href="{% url 'login' %}">Đăng nhập</a>
+              </li>
+              <li>
+                <a href="{% url "login" %}"><button class="header__navbar-upload"><i class="fa-regular fa-pen-to-square"></i><span class="text-upload">Đăng tin</span></button></a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  </body>
+</html>

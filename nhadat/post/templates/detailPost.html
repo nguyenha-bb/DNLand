@@ -1,0 +1,90 @@
+{% extends "base.html" %} {%load static%} {% block content %} <link
+rel="stylesheet" href="{% static "css/detail-post.css"%}" />
+<div class="container__land-detail">
+  <div class="grid detail-page">
+    <div class="container__land-details-main-content">
+      <div class="container__land-detail-main-content">
+        <div class="container__land-detail-top-content">
+          <span class="container__view-fullsize">
+            <a class="img-product" title="" href="#">
+              <img
+                src="{{post.image.url}}"
+                class="image-house"
+                alt="quickview"
+              />
+            </a>
+          </span>
+        </div>
+      </div>
+      <div class="container__land-detail-bottom-content">
+        <div class="container__land-detail-item">
+          <h2 class="title"></h2>
+          <span class="total-price-area">
+            <h3 class="total-price">{{post.priceBillion}} tỷ</h3>
+            |
+            <h3 class="total-area">{{post.pricePerSquare}} triệu/m2</h3>
+          </span>
+
+          <span class="group-item">
+            <span class="address"
+              ><i class="fa-solid fa-location-dot"></i>
+              <span
+                >{{post.addressDetail}}, {{post.ward}}, {{post.district}},
+                {{post.province}}</span
+              ></span
+            >
+            <span class="time-post"
+              ><i class="fa-regular fa-clock"></i>
+              <span>{{post.postTime}}</span></span
+            >
+            <span class="verified"
+              ><i class="fa-solid fa-check"></i>
+              <span>Tin đã được kiểm duyệt</span></span
+            >
+          </span>
+        </div>
+        <div class="container__land-detail-item">
+          <h2 class="title">Đặc điểm bất động sản</h2>
+
+          <span class="group-item characteristic">
+            <span class="area"
+              ><i class="fa-solid fa-chart-area"></i>
+              <span>Diện tích đất: </span>{{post.square}} m2</span
+            >
+            <span class="price"
+              ><i class="fa-solid fa-money-bill-1-wave"></i>
+              <span>Giá: {{post.pricePerSquare}}</span> triệu/m2</span
+            >
+            <span class="direction"
+              ><i class="fa-regular fa-compass"></i
+              ><span>Hướng cửa chính: {{post.direction}}</span></span
+            >
+          </span>
+        </div>
+
+        <div class="container__land-detail-item">
+          <h2 class="title">Mô tả chi tiết</h2>
+
+          <span class="group-item">{{post.description}}</span>
+        </div>
+
+        <div class="container__land-detail-item">
+          <h2 class="title">Liên hệ</h2>
+
+          <span class="group-item">
+            <p>Người đăng tin: {{post.account.fullname}}</p>
+            <p>Số điện thoại: {{post.account.phoneNumber}}</p>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="container__land-details-advertisement-content">
+      <div class="container__land-group-advertisement">
+        <img src="{% static "images/advertisement.jpg" %}" class="image-house"
+        alt="quickview" /> <img src="{% static "images/advertisement.jpg" %}"
+        class="image-house" alt="quickview" />
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
